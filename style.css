@@ -1,0 +1,316 @@
+/* Réinitialisation de base pour le style */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.page {
+    background-color: #fff;
+    
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.none{
+    display: none;
+}
+
+.mt{
+    margin-top: 10px;
+}
+
+.mb{
+    margin-bottom: 5px;
+}
+
+.page h2, .page h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.levels-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.levels-table th, .levels-table td {
+    border: 1px solid;
+    padding: 8px;
+    text-align: center;
+}
+
+.levels {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.levels label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 5px;
+}
+
+.xp-values {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.xp-values p {
+    margin: 5px;
+    text-align: center;
+    flex: 1;
+}
+
+.page button {
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.page button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#character-list {
+    list-style: none;
+    padding: 0;
+}
+
+#character-list li {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button#edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+button#save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+button#back-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+
+ul#items-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+button.delete-button {
+    padding: 2px 5px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #dc3545;
+    color: white;
+    width: 77px;
+    margin-left: 5px;
+}
+
+
+.benefits {
+    margin-top: 10px;
+}
+
+.benefits label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.benefits input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.benefits img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.notes {
+    margin-top: 10px;
+}
+
+.note-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+.note-group {
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+}
+
+.note-group label {
+    margin-right: 5px;
+}
+
+.note-checkbox {
+    width: 20px; /* Ajustez la taille si nécessaire */
+    height: 20px; /* Ajustez la taille si nécessaire */
+    margin-left: 2px;
+}
+
+.character-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.character-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.character-name {
+    flex-grow: 1;
+    text-align: center;
+}
+
+
+.character-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.character-img {
+    width: 100px;
+    height: 150px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.character-header p {
+    /* flex-grow: 1; */
+    text-align: center;
+    font-size: 24px;
+    margin-right: 90px;
+}
+
+
+.xp-gold-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+.xp-container, .gold-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.xp-container p, .gold-container p {
+    margin: 0;
+}
+
+
+/* Bleu foncé */
+.blue-dark {
+    color: #1e3d58;
+}
+
+/* Bleu moyen */
+.blue-medium {
+    color: #2e5077;
+}
+
+/* Bleu clair */
+.blue-light {
+    color: #4a7fa5;
+}
+
+h4 {
+    text-align: center;
+    width: 100%;
+}
+
+
+/* Vert foncé */
+.green-dark {
+    color: #1e583d;
+}
+
+/* Vert moyen */
+.green-medium {
+    color: #2e7750;
+}
+
+/* Vert clair */
+.green-light {
+    color: #4aa57f;
+}
