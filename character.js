@@ -7,17 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const xpActuelInput = document.getElementById('xp-actuel-input');
     const xpActuelInputContainer = document.getElementById('xp-actuel-input-container');
     const itemsList = document.getElementById('items-list');
-    const newItemInput = document.getElementById('new-item-input');
-    const itemsInputContainer = document.getElementById('items-input-container');
-    const addItemButton = document.getElementById('add-item-button');
     const editButton = document.getElementById('edit-button');
     const saveButton = document.getElementById('save-button');
     const backButton = document.getElementById('back-button');
     const levelCheckboxes = document.querySelectorAll('.level-checkbox');
     const benefitCheckboxes = document.querySelectorAll('.benefit-checkbox');
-    const noteCheckboxes = document.querySelectorAll('.note-checkbox'); // Ajoutez ceci pour gérer les note-checkboxes
+    const noteCheckboxes = document.querySelectorAll('.note-checkbox');
+    const storeButton = document.getElementById('store-button');
 
-    // Charge les données du personnage courant
     function loadCurrentCharacter() {
         const name = nameElement.textContent;
         const storedData = localStorage.getItem(`characterData-${name}`);
@@ -30,34 +27,53 @@ document.addEventListener('DOMContentLoaded', () => {
             itemsList.innerHTML = '';
             if (characterData.items) {
                 characterData.items.forEach(item => {
-                    addItemToList(item);
+                    addItemToList(item, false, characterData);
                 });
             }
             levelCheckboxes.forEach(checkbox => {
                 checkbox.checked = characterData.skillLevel.includes(checkbox.value);
-                checkbox.disabled = true; // Garder les cases à cocher désactivées au début
+                checkbox.disabled = true;
             });
             benefitCheckboxes.forEach(checkbox => {
                 checkbox.checked = characterData.benefits && characterData.benefits.includes(checkbox.value);
-                checkbox.disabled = true; // Garder les cases à cocher désactivées au début
+                checkbox.disabled = true;
             });
             noteCheckboxes.forEach(checkbox => {
                 checkbox.checked = characterData.notes && characterData.notes.includes(checkbox.value);
-                checkbox.disabled = true; // Garder les cases à cocher désactivées au début
+                checkbox.disabled = true;
             });
         }
     }
 
-    function addItemToList(item, editable = false) {
+    function addItemToList(item, editable = false, characterData = null) {
         const li = document.createElement('li');
-        li.textContent = item;
+        li.dataset.itemId = item.id;
+        const itemImage = document.createElement('img');
+        itemImage.src = `images/items/${item.image}`;
+        itemImage.alt = item.name;
+        itemImage.className = 'character-item-image';
+    
+        li.appendChild(itemImage);
+    
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Supprimer';
         deleteButton.classList.add('delete-button');
         deleteButton.style.display = editable ? 'inline' : 'none';
         deleteButton.addEventListener('click', () => {
+            const character = characterData || JSON.parse(localStorage.getItem(`characterData-${nameElement.textContent}`));
+            const itemCost = item.cost / 2;
+            character.goldAmount = parseInt(character.goldAmount) + itemCost;
+            localStorage.setItem(`characterData-${nameElement.textContent}`, JSON.stringify(character));
+            goldAmountElement.textContent = character.goldAmount;
+
+            // Supprimer l'item de la liste et des données du personnage
             li.remove();
+            const itemIndex = character.items.findIndex(i => i.id === item.id);
+            if (itemIndex !== -1) {
+                character.items.splice(itemIndex, 1);
+            }
         });
+    
         li.appendChild(deleteButton);
         itemsList.appendChild(li);
     }
@@ -65,67 +81,63 @@ document.addEventListener('DOMContentLoaded', () => {
     editButton.addEventListener('click', () => {
         xpActuelInputContainer.style.display = 'block';
         goldAmountInputContainer.style.display = 'block';
-        itemsInputContainer.style.display = 'block';
         saveButton.style.display = 'inline';
         editButton.style.display = 'none';
         levelCheckboxes.forEach(checkbox => {
-            checkbox.disabled = false; // Activer les cases à cocher lors de la modification
+            checkbox.disabled = false;
         });
         benefitCheckboxes.forEach(checkbox => {
-            checkbox.disabled = false; // Activer les cases à cocher lors de la modification
+            checkbox.disabled = false;
         });
         noteCheckboxes.forEach(checkbox => {
-            checkbox.disabled = false; // Activer les cases à cocher lors de la modification
+            checkbox.disabled = false;
         });
-        // Montrer les boutons de suppression
         document.querySelectorAll('#items-list button').forEach(button => {
             button.style.display = 'inline';
         });
     });
 
-    addItemButton.addEventListener('click', () => {
-        const newItem = newItemInput.value.trim();
-        if (newItem) {
-            addItemToList(newItem, true);
-            newItemInput.value = '';
-        }
-    });
-
     saveButton.addEventListener('click', () => {
         const name = nameElement.textContent;
-        const items = Array.from(itemsList.children).map(li => li.firstChild.textContent);
+        const items = Array.from(itemsList.children).map(li => {
+            return {
+                id: li.dataset.itemId,
+                image: li.querySelector('img').src.split('/').pop(),
+                name: li.querySelector('img').alt,
+                cost: parseInt(li.dataset.itemCost)
+            };
+        });
+    
         const benefits = Array.from(benefitCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-        const notes = Array.from(noteCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value); // Ajoutez ceci pour sauvegarder les notes
+        const notes = Array.from(noteCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
         const characterData = {
             name: name,
             skillLevel: Array.from(levelCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value),
             goldAmount: goldAmountInput.value,
             xpActuel: xpActuelInput.value,
-            items: items,
+            items: items, // Directement sauvegarder les items tels quels
             benefits: benefits,
-            notes: notes // Ajoutez ceci pour sauvegarder les notes
+            notes: notes
         };
-
+    
         localStorage.setItem(`characterData-${name}`, JSON.stringify(characterData));
         alert(`Personnage ${name} sauvegardé !`);
-
+    
         xpActuelElement.textContent = characterData.xpActuel;
         goldAmountElement.textContent = characterData.goldAmount;
         xpActuelInputContainer.style.display = 'none';
         goldAmountInputContainer.style.display = 'none';
-        itemsInputContainer.style.display = 'none';
         saveButton.style.display = 'none';
         editButton.style.display = 'inline';
         levelCheckboxes.forEach(checkbox => {
-            checkbox.disabled = true; // Désactiver les cases à cocher après la sauvegarde
+            checkbox.disabled = true;
         });
         benefitCheckboxes.forEach(checkbox => {
-            checkbox.disabled = true; // Désactiver les cases à cocher après la sauvegarde
+            checkbox.disabled = true;
         });
         noteCheckboxes.forEach(checkbox => {
-            checkbox.disabled = true; // Désactiver les cases à cocher après la sauvegarde
+            checkbox.disabled = true;
         });
-        // Cacher les boutons de suppression
         document.querySelectorAll('#items-list button').forEach(button => {
             button.style.display = 'none';
         });
@@ -135,6 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
     });
 
-    // Initialisation
+    storeButton.addEventListener('click', () => {
+        window.location.href = 'store.html';
+    });
+
     loadCurrentCharacter();
 });

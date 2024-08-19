@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Personnage - Damien</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+
+
+       
+        <h2>Fiche Personnage - Damien</h2>
+        <div class="field">
+            <div class="character-header">
+                <img src="images/perso/bricoleur.png" alt="Brute" class="character-img">
+                <p><span id="name">Gelbin Mekkanivelle</span></p> 
+            </div>
+            
+            
+            <h4 class="green-light">Niveau de compétence / xp requis : </h4>
+            <table class="levels-table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="levels">
+                                <label><input type="checkbox" class="level-checkbox" value="1" disabled> 1</label>
+                                <label><input type="checkbox" class="level-checkbox" value="2" disabled> 2</label>
+                                <label><input type="checkbox" class="level-checkbox" value="3" disabled> 3</label>
+                                <label><input type="checkbox" class="level-checkbox" value="4" disabled> 4</label>
+                                <label><input type="checkbox" class="level-checkbox" value="5" disabled> 5</label>
+                                <label><input type="checkbox" class="level-checkbox" value="6" disabled> 6</label>
+                                <label><input type="checkbox" class="level-checkbox" value="7" disabled> 7</label>
+                                <label><input type="checkbox" class="level-checkbox" value="8" disabled> 8</label>
+                                <label><input type="checkbox" class="level-checkbox" value="9" disabled> 9</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="xp-values">
+                                <p>0</p>
+                                <p>45</p>
+                                <p>95</p>
+                                <p>150</p>
+                                <p>210</p>
+                                <p>275</p>
+                                <p>345</p>
+                                <p>420</p>
+                                <p>500</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <div class="xp-gold-container">
+            <div class="xp-container">
+                <p class="mt ">XP actuel : <span id="xp-actuel">0</span></p>
+                <p id="xp-actuel-input-container" style="display:none;"><input type="number" id="xp-actuel-input" placeholder="Entrez les XP actuels"></p>
+            </div>
+            <div class="gold-container">
+                <p class="mt">Pièces d'or : <span id="gold-amount">0</span></p>
+                <p id="gold-amount-input-container" style="display:none;"><input type="number" id="gold-amount-input" placeholder="Entrez le nombre de pièces d'or"></p>
+            </div>
+        </div>
+
+            <h4 class="mt mb green-light">Items :</h4>
+            <ul id="items-list"></ul>
+
+            <h4 class="mt green-light">Bénéfices :</h4>
+                <div class="benefits">
+                    <label><input type="checkbox" class="benefit-checkbox" value="1"> Retirer deux cartes -1</label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="2"> Retirer deux cartes -1</label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="3"> Remplacer une carte -2 par une carte +0  </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="4"> Ajouter deux cartes +1 </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="5"> Ajouter une carte +3 </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="6"> Ajouter deux cartes  <img src="images/pont.PNG"  > <img src="images/feu.PNG"  > </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="7"> Ajouter trois carte  <img src="images/pont.PNG"  >  CONFUSION  <img src="images/confusion.PNG"  > </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="8"> Ajouter une carte +1 BLESSURE <img src="images/blessure.png"  > </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="9"> Ajouter une carte +1 BLESSURE <img src="images/blessure.png"  ></label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="10"> Ajouter une carte +1 IMMOBILISATION   <img src="images/immobilisation.PNG"  >  </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="11"> Ajouter une carte +1 IMMOBILISATION   <img src="images/immobilisation.PNG"  ></label>  
+                    <label><input type="checkbox" class="benefit-checkbox" value="12"> Ajouter une carte +1 Soin <img src="images/soin.PNG"  > +2 </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="13"> Ajouter une carte +1 Soin <img src="images/soin.PNG"  > +2 </label>  
+                    <label><input type="checkbox" class="benefit-checkbox" value="14"> Ajouter une carte +0 AJOUTER UNE CIBLE <img src="images/cible.png"  > </label>
+                    <label><input type="checkbox" class="benefit-checkbox" value="15"> Ignorer les effets négatifs des scénarios  </label>       
+                </div>
+            
+
+                <h4 class="mt green-light">Notes :</h4>
+                <div class="notes">
+                    <div class="note-row">
+                        <div class="note-group">
+                            <label>✓:</label>
+                            <label><input type="checkbox" class="note-checkbox" value="1"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="2"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="3"></label>
+                        </div>
+                        <div class="note-group">
+                            <label>✓:</label>
+                            <label><input type="checkbox" class="note-checkbox" value="4"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="5"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="6"></label>
+                        </div>
+                        <div class="note-group">
+                            <label>✓:</label>
+                            <label><input type="checkbox" class="note-checkbox" value="7"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="8"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="9"></label>
+                        </div>
+                    </div>
+                    <div class="note-row">
+                        <div class="note-group">
+                            <label>✓:</label>
+                            <label><input type="checkbox" class="note-checkbox" value="10"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="11"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="12"></label>
+                        </div>
+                        <div class="note-group">
+                            <label>✓:</label>
+                            <label><input type="checkbox" class="note-checkbox" value="13"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="14"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="15"></label>
+                        </div>
+                        <div class="note-group">
+                            <label>✓:</label>
+                            <label><input type="checkbox" class="note-checkbox" value="16"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="17"></label>
+                            <label><input type="checkbox" class="note-checkbox" value="18"></label>
+                        </div>
+                    </div>
+                </div>
+                
+                
+
+
+
+
+               
+    
+                <div class="buttons-container">
+                    <button id="store-button">Aller au magasin</button>
+                    <button id="edit-button">Modifier</button>
+                    <button id="save-button" style="display:none;">Sauvegarder</button>
+                    <button id="back-button">Retour</button>
+                </div>
+        </div>
+    </div>
+
+    <script src="character.js"></script>
+</body>
+</html>
