@@ -63,10 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const character = characterData || JSON.parse(localStorage.getItem(`characterData-${nameElement.textContent}`));
             const itemCost = item.cost / 2;
             character.goldAmount = parseInt(character.goldAmount) + itemCost;
-<<<<<<< HEAD
             goldAmountInput.value = character.goldAmount;
-=======
->>>>>>> 13f19d5897319d33da26dd0f88caff09d811697e
             localStorage.setItem(`characterData-${nameElement.textContent}`, JSON.stringify(character));
             goldAmountElement.textContent = character.goldAmount;
 

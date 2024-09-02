@@ -47,10 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 44, name: "Black card", image: "black-card.jpeg", cost: 75, category: "petit objet" },
         { id: 45, name: "power-core", image: "power-core.jpeg", cost: 75, category: "petit objet" },
         { id: 46, name: "second-chance-ring", image: "second-chance-ring.jpeg", cost: 75, category: "petit objet" }, 
-<<<<<<< HEAD
-=======
-
->>>>>>> 13f19d5897319d33da26dd0f88caff09d811697e
         { id: 47, name: "winged-shoes", image: "winged-shoes.jpeg", cost: 20, category: "jambe" },
         { id: 48, name: "heavy-greaves", image: "heavy-greaves.jpeg", cost: 20, category: "jambe" },
         { id: 49, name: "boots-of-striding", image: "boots-of-striding.jpeg", cost: 20, category: "jambe" },
