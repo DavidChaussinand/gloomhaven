@@ -9,10 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: 'Gelbin Mekkanivelle', page: 'damien.html', miniImg: 'images/perso/bricoleurMiniature.png', logoImg: 'images/perso/logoBricoleur.PNG' }
         ];
 
+<<<<<<< HEAD
         characters.forEach(character => {
             const storedData = localStorage.getItem(`characterData-${character.name}`);
             const li = document.createElement('li');
             li.className = 'character-item';
+=======
+                if (characterName === 'Rabban') {
+                    const miniImg = document.createElement('img');
+                    miniImg.src = 'images/perso/bruteMiniature.png';
+                    miniImg.alt = 'Miniature Rabban';
+                    li.appendChild(miniImg);
+>>>>>>> 13f19d5897319d33da26dd0f88caff09d811697e
 
             if (storedData) {
                 // Afficher le personnage chargé
@@ -21,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 miniImg.alt = `Miniature ${character.name}`;
                 li.appendChild(miniImg);
 
+<<<<<<< HEAD
                 const nameSpan = document.createElement('span');
                 nameSpan.className = 'character-name';
                 nameSpan.textContent = character.name;
@@ -34,6 +43,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.addEventListener('click', () => {
                     localStorage.setItem('selectedCharacter', character.name);
                     navigateToCharacterPage(character.page);
+=======
+                    const logoImg = document.createElement('img');
+                    logoImg.src = 'images/perso/logoBrute.png';
+                    logoImg.alt = 'Logo Rabban';
+                    li.appendChild(logoImg);
+                } else if (characterName === 'Nishital') {
+                    const miniImg = document.createElement('img');
+                    miniImg.src = 'images/perso/crapuleMiniature.jpeg';
+                    miniImg.alt = 'Miniature Nishital';
+                    li.appendChild(miniImg);
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'character-name';
+                    nameSpan.textContent = characterName;
+                    li.appendChild(nameSpan);
+
+                    const logoImg = document.createElement('img');
+                    logoImg.src = 'images/perso/logoCrapule.PNG';
+                    logoImg.alt = 'Logo Nishital';
+                    li.appendChild(logoImg);
+                } else if (characterName === 'Gelbin Mekkanivelle') {
+                    const miniImg = document.createElement('img');
+                    miniImg.src = 'images/perso/bricoleurMiniature.png';
+                    miniImg.alt = 'Miniature Gelbin Mekkanivelle';
+                    li.appendChild(miniImg);
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'character-name';
+                    nameSpan.textContent = characterName;
+                    li.appendChild(nameSpan);
+
+                    const logoImg = document.createElement('img');
+                    logoImg.src = 'images/perso/logoBricoleur.PNG';
+                    logoImg.alt = 'Logo Gelbin Mekkanivelle';
+                    li.appendChild(logoImg);
+                } else {
+                    li.textContent = characterName;
+                }
+
+                li.addEventListener('click', () => {
+                    localStorage.setItem('selectedCharacter', characterName);
+                    navigateToCharacterPage(characterName);
+>>>>>>> 13f19d5897319d33da26dd0f88caff09d811697e
                 });
             } else {
                 // Afficher un lien pour charger le personnage si non chargé
@@ -47,8 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+<<<<<<< HEAD
     function navigateToCharacterPage(page) {
         window.location.href = page;
+=======
+    function navigateToCharacterPage(name) {
+        if (name === 'Rabban') {
+            window.location.href = 'david.html';
+        } else if (name === 'Nishital') {
+            window.location.href = 'jo.html';
+        } else if (name === 'Gelbin Mekkanivelle') {
+            window.location.href = 'damien.html';
+        } else {
+            alert(`Aucun personnage trouvé avec le nom ${name}.`);
+        }
+>>>>>>> 13f19d5897319d33da26dd0f88caff09d811697e
     }
 
     displayCharacterList();
