@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 4, name: "minor-power-potion", image: "minor-power-potion.jpeg", cost: 10, category: "petit objet" },
         { id: 5, name: "minor-stamina-potion", image: "minor-stamina-potion.jpeg", cost: 10, category: "petit objet" },
         { id: 6, name: "steel-ring", image: "steel-ring.jpeg", cost: 20, category: "petit objet" },
-        { id: 7, name: "Stun powder", image: "StunPowder.jpeg", cost: 20, category: "petit objet" },
+        { id: 7, name: "Stun-powder", image: "Stun-powder.jpeg", cost: 20, category: "petit objet" },
         { id: 8, name: "moon-earring", image: "moon-earring.jpeg", cost: 20, category: "petit objet" },
         { id: 9, name: "resonant-crystal", image: "resonant-crystal.jpeg", cost: 20, category: "petit objet" },
         { id: 10, name: "minor-antidote", image: "minor-antidote.jpeg", cost: 25, category: "petit objet" },
