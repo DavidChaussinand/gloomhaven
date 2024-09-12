@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const characterList = document.getElementById('character-list');
+    const uploadInput = document.getElementById('upload-json');
+    const uploadButton = document.getElementById('upload-json-btn');
 
+    // Fonction pour afficher la liste des personnages
     function displayCharacterList() {
         characterList.innerHTML = '';
         const characters = [
@@ -39,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Afficher un lien pour charger le personnage si non chargé
                 const link = document.createElement('a');
                 link.href = character.page;
-                link.textContent = `Charger ${character.name}`;
+                link.textContent = ` ${character.name}`;
                 li.appendChild(link);
             }
 
@@ -47,87 +50,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Charger les données depuis un fichier JSON
+    uploadButton.addEventListener('click', () => {
+        if (!uploadInput.files.length) {
+            alert('Veuillez sélectionner un fichier JSON.');
+            return;
+        }
+
+        const file = uploadInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            try {
+                const json = JSON.parse(event.target.result);
+                const characterName = json.name;
+                if (!characterName) {
+                    alert('Le fichier JSON est invalide ou ne contient pas de données de personnage.');
+                    return;
+                }
+
+                // Sauvegarder les données du personnage dans le localStorage
+                localStorage.setItem(`characterData-${characterName}`, JSON.stringify(json));
+                alert(`Données du personnage ${characterName} chargées avec succès.`);
+                // Mettre à jour la liste des personnages après chargement
+                displayCharacterList();
+            } catch (e) {
+                alert('Erreur lors du chargement du fichier JSON.');
+            }
+        };
+        reader.readAsText(file);
+    });
+
     function navigateToCharacterPage(page) {
         window.location.href = page;
     }
 
+    // Afficher la liste des personnages
     displayCharacterList();
 });
-
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const characterList = document.getElementById('character-list');
-
-//     // Affiche la liste des personnages disponibles
-//     function displayCharacterList() {
-//         characterList.innerHTML = '';
-//         for (let i = 0; i < localStorage.length; i++) {
-//             const key = localStorage.key(i);
-//             if (key.startsWith('characterData-')) {
-//                 const characterName = key.replace('characterData-', '');
-//                 const li = document.createElement('li');
-//                 li.className = 'character-item';
-
-//                 // Ajoutez l'image de la miniature pour Rabban
-//                 if (characterName === 'Rabban') {
-//                     const miniImg = document.createElement('img');
-//                     miniImg.src = 'images/perso/bruteMiniature.png';
-//                     miniImg.alt = 'Miniature Rabban';
-//                     li.appendChild(miniImg);
-
-//                     const nameSpan = document.createElement('span');
-//                     nameSpan.className = 'character-name';
-//                     nameSpan.textContent = characterName;
-//                     li.appendChild(nameSpan);
-
-//                     const logoImg = document.createElement('img');
-//                     logoImg.src = 'images/perso/logoBrute.png';
-//                     logoImg.alt = 'Logo Rabban';
-//                     li.appendChild(logoImg);
-//                 } else {
-//                     const nameSpan = document.createElement('span');
-//                     nameSpan.className = 'character-name';
-//                     nameSpan.textContent = characterName;
-//                     li.appendChild(nameSpan);
-//                 }
-
-//                 // Ajoutez le bouton de suppression
-//                 const deleteButton = document.createElement('button');
-//                 deleteButton.textContent = 'Supprimer';
-//                 deleteButton.className = 'delete-button';
-//                 deleteButton.addEventListener('click', (event) => {
-//                     event.stopPropagation(); // Empêche la navigation lors de la suppression
-//                     deleteCharacter(characterName);
-//                 });
-//                 li.appendChild(deleteButton);
-
-//                 li.addEventListener('click', () => {
-//                     navigateToCharacterPage(characterName);
-//                 });
-//                 characterList.appendChild(li);
-//             }
-//         }
-//     }
-
-//     // Navigue vers la page du personnage
-//     function navigateToCharacterPage(name) {
-//         if (name === 'Rabban') {
-//             window.location.href = 'characterDavid.html';
-//         } else if (name === 'jo') {
-//             window.location.href = 'characterJo.html';
-//         } else {
-//             alert(`Aucun personnage trouvé avec le nom ${name}.`);
-//         }
-//     }
-
-//     // Supprime un personnage
-//     function deleteCharacter(name) {
-//         const key = `characterData-${name}`;
-//         localStorage.removeItem(key);
-//         displayCharacterList();
-//     }
-
-//     // Initialisation
-//     displayCharacterList();
-// });

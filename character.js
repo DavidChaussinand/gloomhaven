@@ -61,19 +61,34 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.style.display = editable ? 'inline' : 'none';
         deleteButton.addEventListener('click', () => {
             const character = characterData || JSON.parse(localStorage.getItem(`characterData-${nameElement.textContent}`));
+        
+            // Ajout de log pour vérifier les données avant la suppression
+            console.log('Character Data:', character);
+            console.log('Item Data:', item);
+        
+            // Vérification de l'existence du coût avant la suppression
+            if (!item.cost) {
+                alert('Erreur: Coût de l\'item introuvable.');
+                return;
+            }
+        
             const itemCost = item.cost / 2;
             character.goldAmount = parseInt(character.goldAmount) + itemCost;
             goldAmountInput.value = character.goldAmount;
             localStorage.setItem(`characterData-${nameElement.textContent}`, JSON.stringify(character));
             goldAmountElement.textContent = character.goldAmount;
-
+        
             // Supprimer l'item de la liste et des données du personnage
             li.remove();
             const itemIndex = character.items.findIndex(i => i.id === item.id);
             if (itemIndex !== -1) {
                 character.items.splice(itemIndex, 1);
             }
+        
+            // Mise à jour des données dans le localStorage après suppression
+            localStorage.setItem(`characterData-${nameElement.textContent}`, JSON.stringify(character));
         });
+        
     
         li.appendChild(deleteButton);
         itemsList.appendChild(li);
