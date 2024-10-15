@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const characters = [
             { name: 'Rabban', page: 'david.html', miniImg: 'images/perso/bruteMiniature.png', logoImg: 'images/perso/logoBrute.png' },
             { name: 'Nishital', page: 'jo.html', miniImg: 'images/perso/crapuleMiniature.jpeg', logoImg: 'images/perso/logoCrapule.PNG' },
-            { name: 'Gelbin Mekkanivelle', page: 'damien.html', miniImg: 'images/perso/bricoleurMiniature.png', logoImg: 'images/perso/logoBricoleur.PNG' }
+            { name: 'Gelbin Mekkanivelle', page: 'damien.html', miniImg: 'images/perso/bricoleurMiniature.png', logoImg: 'images/perso/logoBricoleur.PNG' },
+            { name: 'Nestor', page: 'jo2.html', miniImg: 'images/perso/valrath.png', logoImg: 'images/perso/logoIntendant.PNG' },
+            { name: 'Noesta', page: 'bruno.html', miniImg: 'images/perso/cragHeartMiniature.PNG', logoImg: 'images/perso/logoCragHeart.PNG' }
         ];
 
         characters.forEach(character => {
